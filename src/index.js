@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
+import AddressList from './AddressList.js';
 
 class App extends Component {
   state = {
@@ -77,27 +78,34 @@ class App extends Component {
       <div className="App">
         <Container>
           <header classname="App-header text-left"><h1>React Address Book</h1></header>
-          <Form>
+          <AddressList addresses={this.state.addresses}
+                       close={this.deleteFromBookHandler}>         
+          </AddressList>
+          <Form className="text-left" onSubmit={this.addToBookHandler}>
             <Form.Row>
               <Form.Group as={Col} controlId="formGridFirst">
                 <Form.Label>First Name</Form.Label>
-                <Form.Control type="text" placeholder="first name" />
+                <Form.Control type="text" placeholder="first name" 
+                onChange={(e)=> this.setState({fFirstName:e.target.value})}/>
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridLast">
                 <Form.Label>Last Name</Form.Label>
-                <Form.Control type="text" placeholder="last name" />
+                <Form.Control type="text" placeholder="last name" 
+                onChange={(e)=> this.setState({fLastName:e.target.value})}/>
               </Form.Group>
             </Form.Row>
 
             <Form.Group controlId="formGridBirthday">
               <Form.Label>Birthday</Form.Label>
-              <Form.Control type="date" placeholder="MM-DD-YYYY"/>
+              <Form.Control type="date" placeholder="MM-DD-YYYY"
+              onChange={(e)=> this.setState({fBirthday:e.target.value})}/>
             </Form.Group>
 
             <Form.Group controlId="formGridTelephone">
               <Form.Label>Telephone</Form.Label>
-              <Form.Control type="tel" placeholder="###-###-####" />
+              <Form.Control type="tel" placeholder="###-###-####" 
+              onChange={(e)=> this.setState({fTelephone:e.target.value})}/>
             </Form.Group>
 
             <Button variant="primary" type="submit">
