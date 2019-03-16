@@ -52,11 +52,26 @@ class App extends Component {
     "fTelephone":'',
   }
   addToBookHandler=(event)=>{
+    event.preventDefault();
+    let newAddr ={
+      FirstName: this.state.fFirstName,
+      LastName: this.state.fLastName,
+      Birthday: this.state.fBirthday,
+      Telephone: this.state.fTelephone
+    };
+    this.setState({addresses:[...this.state.addresses,newAddr]});
+    this.setState({fFirstName:''});
+    this.setState({fLastName:''});
+    this.setState({fBirthday:''});
+    this.setState({fTelephone:''});
+  }
+  deleteFromBookHandler=(FirstName,LastName,Birthday,Telephone,event)=>{
+    let addresses =[...this.state.addresses];
+    let deleteIndex = addresses.findIndex((item)=>item.Birthday==Birthday && item.FirstName==FirstName &&item.Telephone==Telephone && item.LastName==LastName);
+    addresses.splice(deleteIndex,1);
+    this.setState({"addresses":addresses});
+  }
 
-  }
-  deleteFromBookHandler=(event)=>{
-    
-  }
   render() {
     return (
       <div className="App">
