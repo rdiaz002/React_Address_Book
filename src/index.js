@@ -73,20 +73,24 @@ class App extends Component {
     addresses.splice(deleteIndex, 1);
     this.setState({ "addresses": addresses });
   }
+  updatesearch=(str)=>{
+    this.setState({"SearchString":str});
+  }
 
   render() {
     return (
       <div className="App">
         <Container>
-          <header classname="App-header text-left">
-            <nav><input id="Searchbar" onChange={(e)=>this.setState({SeachString:e.target.value})} type="text" className="float-right" placeholder="Search for someone"></input>
+          <header className="App-header text-left">
+            <nav><input id="Searchbar" onChange={(str)=>this.updatesearch(str.target.value)} type="text" className="float-right" placeholder="Search for someone"></input>
             </nav>
             <h1>React Address Book</h1>
             
           </header>
           <AddressList addresses={this.state.addresses}
-            close={this.deleteFromBookHandler}>
+            close={this.deleteFromBookHandler}
             searchstr={this.state.SearchString}
+            >
           </AddressList>
           <Form className="text-left" onSubmit={this.addToBookHandler}>
             <Form.Row>

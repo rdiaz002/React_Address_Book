@@ -3,7 +3,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 
 function AddressList(props){
-    let addresses = [...props.addresses];
+    let addresses = props.addresses.filter((item)=>strMatch(item,props.searchstr));
     let addressItem= addresses.map((item)=>
     <ListGroup.Item key={item.FirstName+" "+item.LastName}>
         <Card className="bg-light border rounded">
@@ -18,5 +18,14 @@ function AddressList(props){
     )
     return addressItem;
 }
-
+function strMatch(item,expression){
+    
+    if(item.FirstName.includes(expression)||item.LastName.includes(expression)||item.Birthday.includes(expression)||item.Telephone.includes(expression)){
+       
+        return true;
+    }else{
+        
+        return false;
+    }
+}
 export default AddressList;
