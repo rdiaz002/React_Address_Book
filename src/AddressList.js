@@ -21,8 +21,8 @@ function AddressList(props){
     return addressItem;
 }
 function strMatch(item,expression){
-    
-    if(item.FirstName.includes(expression)||item.LastName.includes(expression)||item.Birthday.includes(expression)||item.Telephone.includes(expression)){
+    let expr=expression.toUpperCase();
+    if(item.FirstName.toUpperCase().includes(expr)||item.LastName.toUpperCase().includes(expr)||item.Birthday.toUpperCase().includes(expr)||item.Telephone.toUpperCase().includes(expr)){
        
         return true;
     }else{
