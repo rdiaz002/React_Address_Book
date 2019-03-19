@@ -4,6 +4,9 @@ import Card from 'react-bootstrap/Card';
 
 function ContactList(props){
     let contacts = props.contacts.filter((item)=>strMatch(item,props.searchstr));
+    if(contacts.length==0){
+        return(<blockquote class="blockquote text-center">No Results</blockquote>);
+    }
     let contactItem= contacts.map((item)=>
     <ListGroup.Item key={item.FirstName+" "+item.LastName}>
         <Card className="bg-light border rounded">
