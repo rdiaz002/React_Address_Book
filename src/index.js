@@ -66,6 +66,7 @@ class App extends Component {
     this.setState({ fLastName: '' });
     this.setState({ fBirthday: '' });
     this.setState({ fTelephone: '' });
+    document.getElementById("Massive-form").reset();
   }
   deleteFromBookHandler = (FirstName, LastName, Birthday, Telephone, event) => {
     let addresses = [...this.state.addresses];
@@ -94,7 +95,7 @@ class App extends Component {
             searchstr={this.state.SearchString}
             >
           </AddressList>
-          <Form className="text-left" onSubmit={this.addToBookHandler}>
+          <Form id="Massive-form" className="text-left" onSubmit={this.addToBookHandler}>
             <Form.Row>
               <Form.Group as={Col} controlId="formGridFirst">
                 <Form.Label>First Name</Form.Label>
