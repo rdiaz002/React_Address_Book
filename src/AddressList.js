@@ -11,7 +11,9 @@ function AddressList(props){
                 className="text-right"
                 onClick={props.close.bind(null,item.FirstName,item.LastName,item.Birthday,item.Telephone)}>X</span>
             <Card.Body className="text-left">
-            <h5>{item.LastName}</h5>
+            <h5>{item.FirstName} {item.LastName}</h5>
+            <h6>Birthday:{item.Birthday}</h6>
+            <h6>Telephone:{item.Telephone}</h6>
             </Card.Body>
         </Card>
     </ListGroup.Item>

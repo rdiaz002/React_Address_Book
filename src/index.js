@@ -70,8 +70,10 @@ class App extends Component {
   deleteFromBookHandler = (FirstName, LastName, Birthday, Telephone, event) => {
     let addresses = [...this.state.addresses];
     let deleteIndex = addresses.findIndex((item) => item.Birthday == Birthday && item.FirstName == FirstName && item.Telephone == Telephone && item.LastName == LastName);
+    if(window.confirm("Are you sure you want to delete this contact?")){
     addresses.splice(deleteIndex, 1);
     this.setState({ "addresses": addresses });
+    }
   }
   updatesearch=(str)=>{
     this.setState({"SearchString":str});
