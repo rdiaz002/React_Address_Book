@@ -55,6 +55,10 @@ class App extends Component {
   }
   addToBookHandler = (event) => {
     event.preventDefault();
+    if(this.state.fFirstName=='' && this.state.fLastName==''){
+      window.alert("First Name or Last Name is Required");
+      return;
+    }
     let newAddr = {
       FirstName: this.state.fFirstName,
       LastName: this.state.fLastName,
