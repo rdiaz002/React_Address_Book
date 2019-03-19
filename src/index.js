@@ -5,11 +5,11 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
-import AddressList from './AddressList.js';
+import ContactList from './ContactList.js';
 
 class App extends Component {
   state = {
-    "addresses": [
+    "contacts": [
       {
         FirstName: "Cathy",
         LastName: "Pierce",
@@ -65,7 +65,7 @@ class App extends Component {
       Birthday: this.state.fBirthday,
       Telephone: this.state.fTelephone
     };
-    this.setState({ addresses: [...this.state.addresses, newAddr] });
+    this.setState({ contacts: [...this.state.contacts, newAddr] });
     this.setState({ fFirstName: '' });
     this.setState({ fLastName: '' });
     this.setState({ fBirthday: '' });
@@ -73,11 +73,11 @@ class App extends Component {
     document.getElementById("Massive-form").reset();
   }
   deleteFromBookHandler = (FirstName, LastName, Birthday, Telephone, event) => {
-    let addresses = [...this.state.addresses];
-    let deleteIndex = addresses.findIndex((item) => item.Birthday == Birthday && item.FirstName == FirstName && item.Telephone == Telephone && item.LastName == LastName);
+    let contacts = [...this.state.contacts];
+    let deleteIndex = contacts.findIndex((item) => item.Birthday == Birthday && item.FirstName == FirstName && item.Telephone == Telephone && item.LastName == LastName);
     if(window.confirm("Are you sure you want to delete this contact?")){
-    addresses.splice(deleteIndex, 1);
-    this.setState({ "addresses": addresses });
+    contacts.splice(deleteIndex, 1);
+    this.setState({ "contacts": contacts });
     }
   }
   updatesearch=(str)=>{
@@ -94,11 +94,11 @@ class App extends Component {
             <h1>React Address Book</h1>
             
           </header>
-          <AddressList addresses={this.state.addresses}
+          <ContactList contacts={this.state.contacts}
             close={this.deleteFromBookHandler}
             searchstr={this.state.SearchString}
             >
-          </AddressList>
+          </ContactList>
           <Form id="Massive-form" className="text-left" onSubmit={this.addToBookHandler}>
             <Form.Row>
               <Form.Group as={Col} controlId="formGridFirst">
@@ -116,7 +116,7 @@ class App extends Component {
 
             <Form.Group controlId="formGridBirthday">
               <Form.Label>Birthday</Form.Label>
-              <Form.Control type="date" placeholder="MM-DD-YYYY"
+              <Form.Control type="date" placeholder="01-02-0001"
                 onChange={(e) => this.setState({ fBirthday: e.target.value })} />
             </Form.Group>
 
@@ -127,7 +127,7 @@ class App extends Component {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-              Add to Address Book
+              Add to Contacts Book
             </Button>
           </Form>
 

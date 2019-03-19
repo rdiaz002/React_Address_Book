@@ -2,9 +2,9 @@ import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 
-function AddressList(props){
-    let addresses = props.addresses.filter((item)=>strMatch(item,props.searchstr));
-    let addressItem= addresses.map((item)=>
+function ContactList(props){
+    let contacts = props.contacts.filter((item)=>strMatch(item,props.searchstr));
+    let contactItem= contacts.map((item)=>
     <ListGroup.Item key={item.FirstName+" "+item.LastName}>
         <Card className="bg-light border rounded">
             <span key={item.FirstName+" "+item.LastName}
@@ -18,9 +18,9 @@ function AddressList(props){
         </Card>
     </ListGroup.Item>
     )
-    return addressItem;
+    return contactItem;
 }
-function strMatch(item,expression){
+function strMatch(item,expression){ // Compares Search String to Any of the Contact Info. 
     let expr=expression.toUpperCase();
     if(item.FirstName.toUpperCase().includes(expr)||item.LastName.toUpperCase().includes(expr)||item.Birthday.toUpperCase().includes(expr)||item.Telephone.toUpperCase().includes(expr)){
        
@@ -30,4 +30,4 @@ function strMatch(item,expression){
         return false;
     }
 }
-export default AddressList;
+export default ContactList;
